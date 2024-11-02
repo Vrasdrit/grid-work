@@ -10,8 +10,11 @@ gridChanger.style.width = "200px";
 gridChanger.style.padding = "10px";
 gridChanger.style.margin = "10px";
 gridChanger.textContent = "Click to change grid count";
+
+let answer = "";
 gridChanger.addEventListener("click",function(){
-    return prompt("What should be new size?");
+    answer = prompt("What should be new size by square size?");
+    gridDesigner(answer);
 })
 
 const gridContainer = document.createElement("div");
@@ -21,29 +24,36 @@ gridContainer.style.display = "flex";
 gridContainer.style.width = "250px";
 gridContainer.style.flexWrap = "wrap";
 
-for(i = 0; i<(16); i++){
-    const grid = document.createElement("div");
-    grid.classList.add("grid");
-    gridContainer.append(grid);
-    grid.style.width = "50px";
-    grid.style.height = "50px";
-    grid.style.margin = "1px";
-    grid.style.border = "2px solid black"
-    grid.style.backgroundColor = "white";
+function gridDesigner(length){
+    const cleaner = document.querySelectorAll(".grid");
+    cleaner.forEach(clean => {
+        clean.remove();
+    })
 
-    grid.addEventListener("mouseover",function(){
-        if(grid.style.backgroundColor == "white"){
-            grid.style.backgroundColor = "gray";
-        }
-    })
-    grid.addEventListener("mouseout",function(){
-        if(grid.style.backgroundColor == "gray"){
-            grid.style.backgroundColor = "white";
-        }
-        else{
-        }
-    })
-    grid.addEventListener("click",function(){
-        grid.style.backgroundColor = "green";
-    })
+    for(i = 0; i<(length*length); i++){
+        const grid = document.createElement("div");
+        grid.classList.add("grid");
+        gridContainer.append(grid);
+        grid.style.width = "50px";
+        grid.style.height = "50px";
+        grid.style.margin = "1px";
+        grid.style.border = "2px solid black"
+        grid.style.backgroundColor = "white";
+    
+        grid.addEventListener("mouseover",function(){
+            if(grid.style.backgroundColor == "white"){
+                grid.style.backgroundColor = "gray";
+            }
+        })
+        grid.addEventListener("mouseout",function(){
+            if(grid.style.backgroundColor == "gray"){
+                grid.style.backgroundColor = "white";
+            }
+            else{
+            }
+        })
+        grid.addEventListener("click",function(){
+            grid.style.backgroundColor = "green";
+        })
+    }
 }
