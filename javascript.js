@@ -1,7 +1,18 @@
 const container = document.querySelector(".container");
 container.style.display = "flex";
-container.style.width = "250px";
 container.style.flexWrap = "wrap";
+container.style.flexDirection = "column";
+
+const gridChanger = document.createElement("button");
+gridChanger.classList.add("gridChanger");
+container.append(gridChanger);
+gridChanger.style.width = "200px";
+gridChanger.style.padding = "10px";
+gridChanger.style.margin = "10px";
+gridChanger.textContent = "Click to change grid count";
+gridChanger.addEventListener("click",function(){
+    return prompt("What should be new size?");
+})
 
 const gridContainer = document.createElement("div");
 gridContainer.classList.add("gridContainer");
