@@ -21,14 +21,15 @@ const gridContainer = document.createElement("div");
 gridContainer.classList.add("gridContainer");
 container.append(gridContainer);
 gridContainer.style.display = "flex";
-gridContainer.style.width = "250px";
 gridContainer.style.flexWrap = "wrap";
+gridContainer.style.gap = "10px";
 
 function gridDesigner(length){
     const cleaner = document.querySelectorAll(".grid");
     cleaner.forEach(clean => {
         clean.remove();
     })
+    gridContainer.style.width = ((length*64)) + "px";
 
     for(i = 0; i<(length*length); i++){
         const grid = document.createElement("div");
@@ -36,7 +37,6 @@ function gridDesigner(length){
         gridContainer.append(grid);
         grid.style.width = "50px";
         grid.style.height = "50px";
-        grid.style.margin = "1px";
         grid.style.border = "2px solid black"
         grid.style.backgroundColor = "white";
     
