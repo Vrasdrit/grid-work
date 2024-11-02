@@ -14,7 +14,14 @@ gridChanger.textContent = "Click to change grid count";
 let answer = "";
 gridChanger.addEventListener("click",function(){
     answer = prompt("What should be new size by square size?");
-    gridDesigner(answer);
+    const numberAnswer = Number(answer);
+
+    if(numberAnswer === null || numberAnswer > 100 || numberAnswer < 1 || isNaN(numberAnswer)){
+        alert("You need to enter a number and it has to be between 0 and 100");
+    }
+    else{
+        gridDesigner(answer);
+    }
 })
 
 const gridContainer = document.createElement("div");
